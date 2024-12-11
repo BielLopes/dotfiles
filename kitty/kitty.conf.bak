@@ -1,0 +1,12 @@
+# BEGIN_KITTY_THEME
+# 3024 Night
+include current-theme.conf
+# END_KITTY_THEME
+#
+
+font_family 		MesloGS Nerd Font Mono
+bold_font 		MesloGS Nerd Font Mono
+italic_font 		MesloGS Nerd Font Mono
+bold_italic_font 	MesloGS Nerd Font Mono
+
+background_opacity	0.775

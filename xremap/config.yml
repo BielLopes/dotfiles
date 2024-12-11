@@ -1,0 +1,7 @@
+keymap:
+  - name: Arrows 
+    remap:
+      Alt-Shift-h: left
+      Alt-Shift-l: right
+      Alt-Shift-j: down
+      Alt-Shift-k: up

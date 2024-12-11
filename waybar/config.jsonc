@@ -1,0 +1,179 @@
+{
+	"layer": "top",
+	"position": "top",
+	"modules-left": [
+		"custom/launcher",
+		"hyprland/workspaces",
+		"custom/right-arrow-workspace"
+	],
+	"modules-center": [
+		"custom/left-arrow-dark",
+		"clock#1",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+		"clock#2",
+		"custom/right-arrow-dark",
+		"custom/right-arrow-light",
+		"clock#3",
+		"custom/right-arrow-dark"
+	],
+	"modules-right": [
+		"custom/left-arrow-dark",
+		"pulseaudio",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+		"memory",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+		"disk",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+		"network",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+		"custom/notification",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+		"tray"
+	],
+	"custom/left-arrow-dark": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/left-arrow-light": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/right-arrow-dark": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/right-arrow-workspace": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/right-arrow-light": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"custom/launcher": {
+		"format": "",
+		"on-click": "wofi --show drun"
+	},
+	
+	"hyprland/workspaces": {
+		"format": "{icon}",
+		"on-click": "activate",
+		"all-outputs": true,
+		"sort-by-number": true,
+		"format-icons": {
+			"default": "",
+			"0": "0",
+			"1": "1",
+			"2": "2",
+			"3": "3",
+			"4": "4",
+			"5": "5",
+			"6": "6",
+			"7": "7",
+			"8": "8",
+			"9": "9",
+			"active": ""
+		}
+	},
+	"clock#1": {
+		"format": "{:%a}",
+		"tooltip": false
+	},
+	"clock#2": {
+		"format": "{:%H:%M}",
+		"tooltip": false
+	},
+	"clock#3": {
+		"format": "{:%d-%m}",
+		"tooltip": false
+	},
+	"pulseaudio": {
+		"format": "{icon} {volume:2}%",
+		"format-bluetooth": "{icon} {volume}% ",
+		"format-muted": "{icon} Muted",
+		"format-icons": {
+			"headphones": "",
+			"default": [
+				" ",
+				" "
+			]
+		},
+		"scroll-step": 5,
+		"on-click": "pamixer -t",
+		"on-click-right": "pavucontrol"
+	},
+	//"memory": {
+	//	"interval": 5,
+	//	"format": "Mem {}%"
+	//},
+	//"cpu": {
+	//	"interval": 5,
+	//	"format": "CPU {usage:2}%"
+	//},
+	"battery": {
+		"interval": 5,
+		"states": {
+			"good": 95,
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{icon} {capacity}%",
+		"format-icons": [
+			" ",
+			" ",
+			" ",
+			" ",
+			" "
+		]
+	},
+	"cpu": {
+		"interval": 2,
+		"format": " {usage:>2}%",
+		"on-click": "hyprctl dispatcher togglespecialworkspace monitor"
+	},	
+	"memory": {
+		"interval": 2,
+		"format": " {:>2}%"
+	},
+
+	"disk": {
+		"interval": 15,
+		"format": "󰋊 {percentage_used:>2}%"
+	},	
+	"network": {
+		// "interface": "wlp2*", // (Optional) To force the use of this interface
+		"interval": 1,
+		"format-wifi": "  {bandwidthTotalBytes:>2}",
+		"format-ethernet": "{ipaddr}/{cidr} ",
+		"tooltip-format-wifi": " {ipaddr} ({signalStrength}%)",
+		"tooltip-format": "{ifname} via {gwaddr} ",
+		"format-linked": "{ifname} (No IP) ",
+		"format-disconnected": "󰀦 Disconnected",
+		"format-alt": "{ifname}: {ipaddr}/{cidr}"
+	},
+	//"disk": {
+	//	"interval": 5,
+	//	"format": "Disk {percentage_used:2}%",
+	//	"path": "/"
+	//},
+	"custom/notification": {
+		"tooltip": false,
+		"format": "",
+		"return-type": "json",
+		"exec-if": "which swaync-client",
+		"exec": "swaync-client -swb",
+		"on-click": "swaync-client -t -sw",
+		"on-click-right": "swaync-client -d -sw",
+		"escape": true
+	},
+	"tray": {
+		"icon-size": 20
+	}
+}
