@@ -158,11 +158,6 @@
 		"format-disconnected": "󰀦 Disconnected",
 		"format-alt": "{ifname}: {ipaddr}/{cidr}"
 	},
-	//"disk": {
-	//	"interval": 5,
-	//	"format": "Disk {percentage_used:2}%",
-	//	"path": "/"
-	//},
 	"custom/notification": {
 		"tooltip": false,
 		"format": "",

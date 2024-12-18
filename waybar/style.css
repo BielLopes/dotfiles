@@ -49,7 +49,7 @@ window#waybar {
     font-style: normal;
 }
 #workspaces * {
-    font-family: "JetBrainsMonoNL NFM";
+    font-family: "FontAwesome";
 }
 #workspaces button {
     padding: 0px 10px;
@@ -99,6 +99,7 @@ window#waybar {
 }
 
 #custom-launcher {
+    font-family: FontAwesome;
     padding: 0 20px 0 10px;
     background-color: @flamingo;
     border-right: 2px @surface0 solid;
