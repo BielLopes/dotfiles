@@ -5,3 +5,4 @@ keymap:
       Alt-Shift-l: right
       Alt-Shift-j: down
       Alt-Shift-k: up
+      CapsLock: Esc
