@@ -5,7 +5,6 @@ cdrom_iso="/backup/Applications/archlinux-2024.12.01-x86_64.iso"
 hard_disk_image="~/.virtualization/archFS.qcow2"
 memory="2G"
 cpus="2"
-use_iso=0
 
 # Parse command-line arguments
 while getopts ":m:s:h:i:f:iso" opt; do
@@ -20,7 +19,7 @@ while getopts ":m:s:h:i:f:iso" opt; do
             help=1
             ;;
         i)
-            use_iso=1
+            cdrom_iso="$OPTARG"
             ;;
         f)
             hard_disk_image="$OPTARG"
@@ -41,9 +40,7 @@ fi
 qemu_cmd="qemu-system-x86_64 -enable-kvm -m $memory -smp $cpus -hda $hard_disk_image -boot d -netdev user,id=net0,net=192.168.0.0/24,dhcpstart=192.168.0.9 -device virtio-net-pci,netdev=net0 -vga virtio -device AC97"
 
 # Add the -cdrom option only if -iso or -i was specified
-if [[ $use_iso ]]; then
-    qemu_cmd="$qemu_cmd -cdrom $cdrom_iso"
-fi
+# qemu_cmd="$qemu_cmd -cdrom $cdrom_iso"
 
 # Execute the QEMU command
 echo $qemu_cmd
