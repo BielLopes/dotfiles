@@ -31,8 +31,11 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-# ls command styling
+# Alias for fast commands
 alias ls="ls --color=auto"
+alias la="ls -a"
+alias lg="lazygit"
+alias lsql="lazysql"
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
