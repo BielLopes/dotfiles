@@ -49,5 +49,8 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 # Zoxide initialization
 eval "$(zoxide init zsh)"
 
-# Created by `pipx` on 2024-12-28 00:19:51
+# Add local bin to PATH
 export PATH="$PATH:$HOME/.local/bin"
+
+# Add rust to PATH
+. "$HOME/.cargo/env"
