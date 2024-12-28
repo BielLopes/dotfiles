@@ -46,4 +46,5 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 # Zoxide initialization
 eval "$(zoxide init zsh)"
 
-
+# Created by `pipx` on 2024-12-28 00:19:51
+export PATH="$PATH:$HOME/.local/bin"
