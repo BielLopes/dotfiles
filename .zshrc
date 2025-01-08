@@ -61,3 +61,7 @@ alias wayvnc="/backup/Applications/Wayvnc/wayvnc/build/wayvnc"
 # Connect vpn and ti file-system
 alias vpn="/backup/Applications/vpn-connection.sh"
 alias ti-fs="/backup/Applications/arquivos-ti.sh"
+
+# Set JAVA_HOME to the custom JDK installation
+export JAVA_HOME=/backup/Applications/jdk-23
+export PATH=$JAVA_HOME/bin:$PATH
