@@ -54,3 +54,10 @@ export PATH="$PATH:$HOME/.local/bin"
 
 # Add rust to PATH
 . "$HOME/.cargo/env"
+
+# Wayvnc alias
+alias wayvnc="/backup/Applications/Wayvnc/wayvnc/build/wayvnc"
+
+# Connect vpn and ti file-system
+alias vpn="/backup/Applications/vpn-connection.sh"
+alias ti-fs="/backup/Applications/arquivos-ti.sh"
