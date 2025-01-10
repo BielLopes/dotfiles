@@ -1,5 +1,16 @@
 return {
     {
+        "jay-babu/mason-nvim-dap.nvim",
+        require("mason-nvim-dap").setup(
+            {
+                ensure_installed = {
+                    "codelldb",
+                    "cpptools",
+                }
+            }
+        ),
+    },
+    {
         "mfussenegger/nvim-dap",
         dependencies = {
             "rcarriga/nvim-dap-ui",
