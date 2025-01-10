@@ -16,9 +16,9 @@ return {
                         -- filter using buffer options
                         bo = {
                             -- if the file type is one of following, the window will be ignored
-                            filetype = { "neo-tree", "neo-tree-popup", "notify" },
+                            filetype = { 'neo-tree', "neo-tree-popup", "notify" },
                             -- if the buffer type is one of following, the window will be ignored
-                            buftype = { "terminal", "quickfix" },
+                            buftype = { 'terminal', "quickfix" },
                         },
                     },
                 })
@@ -59,7 +59,7 @@ return {
                     padding = 1, -- extra padding on left hand side
                     -- indent guides
                     with_markers = true,
-                    indent_marker = "*",
+                    indent_marker = "",
                     last_indent_marker = "└",
                     highlight = "NeoTreeIndentMarker",
                     -- expander config, needed for nesting files
@@ -69,8 +69,8 @@ return {
                     expander_highlight = "NeoTreeExpander",
                 },
                 icon = {
-                    folder_closed = "",
-                    folder_open = "",
+                    folder_closed = "󰉋",
+                    folder_open = "󱧩",
                     folder_empty = "󰜌",
                     provider = function(icon, node, state) -- default icon provider utilizes nvim-web-devicons if available
                         if node.type == "file" or node.type == "terminal" then
@@ -86,7 +86,7 @@ return {
                     -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
                     -- then these will never be used.
                     default = "*",
-                    highlight = "NeoTreeFileIcon",
+                    highlight = "NeoTreeFileIcon"
                 },
                 modified = {
                     symbol = "[+]",
@@ -100,14 +100,14 @@ return {
                 git_status = {
                     symbols = {
                         -- Change type
-                        added = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
-                        modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
-                        deleted = "✖", -- this can only be used in the git_status source
-                        renamed = "󰁕", -- this can only be used in the git_status source
+                        added = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
+                        modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
+                        deleted = "󱟃", -- this can only be used in the git_status source
+                        renamed = "󰑕", -- this can only be used in the git_status source
                         -- Status type
-                        untracked = "",
+                        untracked = "",
                         ignored = "",
-                        unstaged = "󰄱",
+                        unstaged = "",
                         staged = "",
                         conflict = "",
                     },
@@ -115,22 +115,22 @@ return {
                 -- If you don't want to use these columns, you can set `enabled = false` for each of them individually
                 file_size = {
                     enabled = false,
-                    width = 12, -- width of the column
+                    width = 12,          -- width of the column
                     required_width = 64, -- min width of window required to show this column
                 },
                 type = {
                     enabled = false,
-                    width = 10, -- width of the column
+                    width = 10,           -- width of the column
                     required_width = 122, -- min width of window required to show this column
                 },
                 last_modified = {
                     enabled = false,
-                    width = 20, -- width of the column
+                    width = 20,          -- width of the column
                     required_width = 88, -- min width of window required to show this column
                 },
                 created = {
                     enabled = false,
-                    width = 20, -- width of the column
+                    width = 20,           -- width of the column
                     required_width = 110, -- min width of window required to show this column
                 },
                 symlink_target = {
