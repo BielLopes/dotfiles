@@ -3,19 +3,13 @@ return {
         "nvim-telescope/telescope.nvim",
         tag = "0.1.8",
         dependencies = { "nvim-lua/plenary.nvim" },
-        opts = {
-            defaults = {
-                layout_strategy = "horizontal",
-                layout_config = { prompt_position = "top" },
-                sorting_strategy = "ascending",
-                winblend = 0,
-            },
+        opts = { },
+        keys = {
+            { '<leader>ff', "<cmd>:lua require('telescope.builtin').find_files({layout_strategy='vertical',layout_config={width=0.95, height=0.9, prompt_position='top'}})<CR>",    desc = 'Find by file name' },
+            { '<leader>fg', "<cmd>:lua require('telescope.builtin').live_grep({layout_strategy='vertical',layout_config={width=0.95, height=0.9, prompt_position='top'}})<CR>",    desc = 'Find by string match on all files' },
+            { '<leader>fh', "<cmd>:lua require('telescope.builtin').oldfiles({layout_strategy='vertical',layout_config={width=0.95, height=0.9, prompt_position='top'}})<CR>",   desc = 'Recent searched files' },
         },
         config = function()
-            local builtin = require("telescope.builtin")
-            vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
-            vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
-            vim.keymap.set("n", "<leader>fh", builtin.oldfiles, {})
         end,
     },
     {
