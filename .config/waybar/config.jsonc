@@ -58,8 +58,8 @@
 	},
 
 	"custom/launcher": {
-		"format": "",
-		"on-click": "wofi --show drun"
+		"format": "",
+		"on-click": "$HOME/.config/rofi/launchers/type-6/launcher.sh"
 	},
 	
 	"hyprland/workspaces": {
@@ -79,7 +79,7 @@
 			"7": "7",
 			"8": "8",
 			"9": "9",
-			"active": ""
+			"active": "󰍎"
 		}
 	},
 	"clock#1": {
