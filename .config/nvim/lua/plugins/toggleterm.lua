@@ -12,6 +12,15 @@ return {
                 title_pos = "center",
             },
         })
-    end,
 
+        -- Custom commands
+        -- Run cargo run on terminal
+        vim.keymap.set("n", "<leader>cr", function()
+            vim.cmd("ToggleTerm")
+            -- Send the command to the default terminal
+            vim.cmd("TermExec cmd='cargo run'")
+        end)
+
+
+    end,
 }
