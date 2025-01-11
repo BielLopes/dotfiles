@@ -28,19 +28,34 @@ return {
         "neovim/nvim-lspconfig",
         config = function()
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
+            local on_attach = require('cmp_nvim_lsp').on_attach
+            local util = require("lspconfig/util")
 
             local lspconfig = require("lspconfig")
             lspconfig.lua_ls.setup({
-                capabilities = capabilities
+                capabilities = capabilities,
+                on_attach = on_attach,
             })
             lspconfig.denols.setup({
-                capabilities = capabilities
+                capabilities = capabilities,
+                on_attach = on_attach,
             })
             lspconfig.rust_analyzer.setup({
-                capabilities = capabilities
+                capabilities = capabilities,
+                on_attach = on_attach,
+                filetypes = { "rust" },
+                root_dir = util.root_pattern("Cargo.toml"),
+                settings = {
+                    ["rust-analyzer"] = {
+                        cargo = {
+                            allFeatures = true,
+                        },
+                    },
+                },
             })
             lspconfig.jdtls.setup({
-                capabilities = capabilities
+                capabilities = capabilities,
+                on_attach = on_attach,
             })
 
             vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
