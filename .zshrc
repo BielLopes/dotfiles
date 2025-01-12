@@ -68,3 +68,7 @@ export PATH=$JAVA_HOME/bin:$PATH
 
 # Start nvm
 source /usr/share/nvm/init-nvm.sh
+
+# Add nixpkgs binaries to the PATH
+export PATH=$PATH:$HOME/.nix-profile/bin
+export XDG_DATA_DIRS=$HOME/.nix-profile/share:$XDG_DATA_DIRS
