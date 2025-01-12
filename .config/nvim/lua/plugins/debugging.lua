@@ -16,13 +16,11 @@ return {
             "rcarriga/nvim-dap-ui",
             "nvim-neotest/nvim-nio",
             "theHamsta/nvim-dap-virtual-text",
-            "ldelossa/nvim-dap-projects",
         },
         config = function()
             local dap, dapui = require("dap"), require("dapui")
             dapui.setup({})
             require("nvim-dap-virtual-text").setup()
-            require("nvim-dap-projects").search_project_config()
 
             vim.keymap.set("n", "<F5>", function()
                 dap.continue()
@@ -66,6 +64,9 @@ return {
                 widgets.centered_float(widgets.scopes)
             end)
 
+            dap.listeners.before.launch.dapui_config = function()
+                dapui.open()
+            end
             dap.listeners.before.attach.dapui_config = function()
                 dapui.open()
             end
@@ -83,14 +84,15 @@ return {
                 command = "/usr/bin/lldb-dap", -- adjust as needed, must be absolute path
                 name = "lldb",
             }
-            -- C++
-            dap.configurations.cpp = {
+            -- Rust
+            local projecct_name = vim.fn.getcwd():match("([^/]+)$")
+            dap.configurations.rust = {
                 {
                     name = "Launch",
                     type = "lldb",
                     request = "launch",
                     program = function()
-                        return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+                        return vim.fn.getcwd() .. "/target/debug/" .. projecct_name
                     end,
                     cwd = "${workspaceFolder}",
                     stopOnEntry = false,
@@ -99,9 +101,9 @@ return {
                 },
             }
             -- C
-            dap.configurations.c = dap.configurations.cpp
-            -- Rust
-            dap.configurations.rust = dap.configurations.cpp
+            dap.configurations.c = dap.configurations.rust
+            -- C++
+            dap.configurations.cpp = dap.configurations.rust
             -- Java
             -- dap.configurations.java = {
             --     {
