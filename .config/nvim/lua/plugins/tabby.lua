@@ -4,11 +4,15 @@ return {
     dependencies = {
         "nvim-tree/nvim-web-devicons",
     },
+    keys = {
+        { "<TAB>", "<cmd>:tabn<cr>",   desc = "Go to the Next tab" },
+        { "<S-TAB>", "<cmd>:tabp<cr>", desc = "Go to the Previus tab" },
+        { "<S-T>", "<cmd>:tabnew<cr>", desc = "Go to the Previus tab" },
+    },
     config = function()
         -- configs...
         local theme = {
-            fill = "TabLineFill",
-            -- Also you can do this: fill = { fg='#f2e9de', bg='#907aa9', style='italic' }
+            fill = { fg='#f2e9de', bg='#907aa9', style='italic' },
             head = "TabLine",
             current_tab = "TabLineSel",
             tab = "TabLine",
