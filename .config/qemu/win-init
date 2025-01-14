@@ -1,10 +1,12 @@
 #!/bin/bash
 
 # Default values
-cdrom_iso="/media/ssd1/ArchVirt/archlinux-2024.12.01-x86_64.iso"
-hard_disk_image="/media/ssd1/ArchVirt/archFS.qcow2"
-memory="2G"
-cpus="2"
+cdrom="/media/ssd1/WindowsVirt/Win10_22H2_EnglishInternational_x64v1.iso"
+hard_disk_image="/media/ssd1/WindowsVirt/windows10.qcow2"
+virtio_driver="/media/ssd1/WindowsVirt/virtio-win-0.1.266.iso"
+memory="16G"
+cores="14"
+threads="2"
 
 # Parse command-line arguments
 while getopts ":m:s:h:i:f:iso" opt; do
@@ -12,8 +14,11 @@ while getopts ":m:s:h:i:f:iso" opt; do
         m)
             memory="$OPTARG"
             ;;
-        s)
+        c)
             cpus="$OPTARG"
+            ;;
+        t)
+            threads="$OPTARG"
             ;;
         # i)
         #     cdrom_iso="$OPTARG"
@@ -35,8 +40,20 @@ done
 # fi
 
 # Construct the QEMU command
-qemu_cmd="qemu-system-x86_64 -enable-kvm -m $memory -smp $cpus -hda $hard_disk_image -boot d -netdev user,id=net0,net=192.168.0.0/24,dhcpstart=192.168.0.9 -device virtio-net-pci,netdev=net0 -vga virtio -device AC97"
 
+qemu_cmd="qemu-system-x86_64 \
+  -enable-kvm \
+  -cpu host \
+  -m $memory \
+  -smp cores=$cores,threads=$threads,sockets=1 \
+  -drive file=$hard_disk_image,if=virtio \
+  -drive file=$virtio_driver,index=3,media=cdrom \
+  -boot c \
+  -netdev user,id=net0,net=192.168.0.0/24,dhcpstart=192.168.0.9 \
+  -device virtio-net-pci,netdev=net0 \
+  -vga virtio \
+  -device intel-hda -device hda-duplex \
+  -cdrom $cdrom"
 # Add the -cdrom option only if -iso or -i was specified
 # qemu_cmd="$qemu_cmd -cdrom $cdrom_iso"
 
