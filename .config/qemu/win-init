@@ -3,6 +3,7 @@
 # Default values
 cdrom="/media/ssd1/WindowsVirt/Win10_22H2_EnglishInternational_x64v1.iso"
 hard_disk_image="/media/ssd1/WindowsVirt/windows10.qcow2"
+virtio_driver="/media/ssd1/WindowsVirt/virtio-win-0.1.266.iso"
 memory="16G"
 cores="14"
 threads="2"
@@ -46,7 +47,8 @@ qemu_cmd="qemu-system-x86_64 \
   -m $memory \
   -smp cores=$cores,threads=$threads,sockets=1 \
   -drive file=$hard_disk_image,if=virtio \
-  -boot d \
+  -drive file=$virtio_driver,index=3,media=cdrom \
+  -boot c \
   -netdev user,id=net0,net=192.168.0.0/24,dhcpstart=192.168.0.9 \
   -device virtio-net-pci,netdev=net0 \
   -vga virtio \
