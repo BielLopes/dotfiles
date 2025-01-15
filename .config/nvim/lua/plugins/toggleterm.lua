@@ -20,7 +20,14 @@ return {
             -- Send the command to the default terminal
             vim.cmd("TermExec cmd='cargo run'")
         end)
+        -- Run Harlequin on custom terminal
+        local Terminal = require('toggleterm.terminal').Terminal
+        local sil_harlenquin  = Terminal:new({ cmd = "harlequin --adapter postgres --host localhost --port 5432 -U admin --password admin --dbname sil-versao-nova", hidden = false })
 
 
+        vim.keymap.set("n", "<leader>sh",
+            function()
+                sil_harlenquin:toggle()
+            end)
     end,
 }
