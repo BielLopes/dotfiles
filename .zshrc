@@ -36,6 +36,7 @@ alias ls="ls --color=auto"
 alias la="ls -a"
 alias lg="lazygit"
 alias lsql="lazysql"
+alias sil-hq="harlequin --adapter postgres --host localhost --port 5432 -U admin --password admin --dbname sil-versao-nova"
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
