@@ -4,7 +4,7 @@
 cdrom="/media/ssd1/WindowsVirt/Win10_22H2_EnglishInternational_x64v1.iso"
 hard_disk_image="/media/ssd1/WindowsVirt/windows10.qcow2"
 virtio_driver="/media/ssd1/WindowsVirt/virtio-win-0.1.266.iso"
-memory="16G"
+memory="24G"
 cores="14"
 threads="2"
 
@@ -42,20 +42,23 @@ done
 # Construct the QEMU command
 
 qemu_cmd="qemu-system-x86_64 \
-  -enable-kvm \
-  -cpu host \
-  -m $memory \
-  -smp cores=$cores,threads=$threads,sockets=1 \
-  -drive file=$hard_disk_image,if=virtio \
-  -drive file=$virtio_driver,index=3,media=cdrom \
-  -boot c \
-  -netdev user,id=net0,net=192.168.0.0/24,dhcpstart=192.168.0.9 \
-  -device virtio-net-pci,netdev=net0 \
-  -vga virtio \
-  -device intel-hda -device hda-duplex \
-  -cdrom $cdrom"
-# Add the -cdrom option only if -iso or -i was specified
-# qemu_cmd="$qemu_cmd -cdrom $cdrom_iso"
+	-enable-kvm \
+	-cpu host \
+	-m $memory \
+	-smp cores=$cores,threads=$threads,sockets=1 \
+	-drive file=$hard_disk_image,if=virtio \
+	-boot c \
+	-usbdevice tablet \
+	-netdev user,id=net0,net=192.168.0.0/24,dhcpstart=192.168.0.9 \
+	-device virtio-net-pci,netdev=net0 \
+	-vga virtio \
+	-device intel-hda -device hda-duplex"
+	# -cdrom $cdrom \"
+	# -drive file=$virtio_driver,index=3,media=cdrom \
+	# -object memory-backend-file,id=mem,size=$memory,share=on,mem-path=/dev/shm \
+	# -numa node,memdev=mem \
+	# -chardev socket,id=char0,path=/tmp/vm_virtiofs \
+	# -device vhost-user-fs-pci,chardev=char0,tag=shared \
 
 # Execute the QEMU command
 echo $qemu_cmd
