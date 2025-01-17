@@ -1,3 +1,4 @@
+#!/bin/zsh
 
 # Key binds for zsh
 bindkey  "^[[H"   beginning-of-line
