@@ -1,5 +1,5 @@
 return {
-    "VonHeikemen/fine-cmdline.nvim",
+    "VonHeikemen/fine-cmdline.nvim", -- Plugin to execut commands on a floating UI
     dependencies = {
         "MunifTanjim/nui.nvim",
     },
