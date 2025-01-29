@@ -7,6 +7,7 @@ virtio_driver="/media/ssd1/WindowsVirt/virtio-win-0.1.266.iso"
 memory="24G"
 cores="14"
 threads="2"
+port_forward="8080"
 
 # Parse command-line arguments
 while getopts ":m:s:h:i:f:iso" opt; do
@@ -19,6 +20,9 @@ while getopts ":m:s:h:i:f:iso" opt; do
             ;;
         t)
             threads="$OPTARG"
+            ;;
+        p)
+            port_forward="$OPTARG"
             ;;
         # i)
         #     cdrom_iso="$OPTARG"
@@ -53,6 +57,7 @@ qemu_cmd="qemu-system-x86_64 \
 	-device virtio-net-pci,netdev=net0 \
 	-vga virtio \
 	-device intel-hda -device hda-duplex"
+    # -netdev bridge,id=net0,br=br0 \
 	# -cdrom $cdrom \"
 	# -drive file=$virtio_driver,index=3,media=cdrom \
 	# -object memory-backend-file,id=mem,size=$memory,share=on,mem-path=/dev/shm \
