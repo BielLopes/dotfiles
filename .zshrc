@@ -74,3 +74,6 @@ source /usr/share/nvm/init-nvm.sh
 # Add nixpkgs binaries to the PATH
 export PATH=$PATH:$HOME/.nix-profile/bin
 export XDG_DATA_DIRS=$HOME/.nix-profile/share:$XDG_DATA_DIRS
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/gabriel/.lmstudio/bin"
