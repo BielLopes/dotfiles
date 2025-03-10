@@ -39,6 +39,10 @@ alias lg="lazygit"
 alias lsql="lazysql"
 alias sil-hq="harlequin --adapter postgres --host localhost --port 5432 -U admin --password admin --dbname sil-versao-nova"
 
+# Alias for postgress 13
+alias psql17="/usr/bin/psql"
+alias postgres17="/usr/bin/postgres"
+
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
@@ -72,7 +76,7 @@ export PATH=$JAVA_HOME/bin:$PATH
 source /usr/share/nvm/init-nvm.sh
 
 # Add nixpkgs binaries to the PATH
-export PATH=$PATH:$HOME/.nix-profile/bin
+export PATH=$HOME/.nix-profile/bin:$PATH
 export XDG_DATA_DIRS=$HOME/.nix-profile/share:$XDG_DATA_DIRS
 
 # Added by LM Studio CLI (lms)
