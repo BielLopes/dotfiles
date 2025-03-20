@@ -69,7 +69,7 @@ alias vpn="/backup/Applications/vpn-connection.sh"
 alias ti-fs="/backup/Applications/arquivos-ti.sh"
 
 # Set JAVA_HOME to the custom JDK installation
-export JAVA_HOME=/backup/Applications/jdk-23
+export JAVA_HOME=/backup/Applications/jdk-17
 export PATH=$JAVA_HOME/bin:$PATH
 
 # Start nvm
@@ -81,3 +81,8 @@ export XDG_DATA_DIRS=$HOME/.nix-profile/share:$XDG_DATA_DIRS
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/home/gabriel/.lmstudio/bin"
+
+# Android Studio Comfiguration
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
