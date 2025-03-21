@@ -82,6 +82,9 @@ export XDG_DATA_DIRS=$HOME/.nix-profile/share:$XDG_DATA_DIRS
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/home/gabriel/.lmstudio/bin"
 
+# Yarn bin path
+export PATH="$PATH:$(yarn global bin)"
+
 # Android Studio Comfiguration
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
